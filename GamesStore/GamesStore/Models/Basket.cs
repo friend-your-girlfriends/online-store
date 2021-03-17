@@ -4,8 +4,7 @@ namespace GamesStore.Models
 {
     public class Basket
     {
-        public int BasketId { get; set; }
-        public int GameId { get; set; }
+        public string BasketId { get; set; }
         public float TotalPrice { get; set; }
         public int Quantity { get; set; }
     }
