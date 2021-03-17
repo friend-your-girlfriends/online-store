@@ -1,6 +1,7 @@
 using GamesStore.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -23,8 +24,15 @@ namespace GamesStore
             // Configure Entityframework core with PostgreSql.
             services.AddDbContext<GameContext>(options =>
             {
-                options.UseNpgsql(Configuration.GetConnectionString("Default"));
+                options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection"));
             });
+
+            services.AddIdentity<IdentityUser, IdentityRole>(options =>
+            {
+                options.Password.RequireDigit = true;
+                options.Password.RequireLowercase = true;
+                options.Password.RequiredLength = 6;
+            }).AddEntityFrameworkStores<GameContext>();
 
             services.AddControllersWithViews();
         }
@@ -51,6 +59,7 @@ namespace GamesStore
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+
             });
         }
     }

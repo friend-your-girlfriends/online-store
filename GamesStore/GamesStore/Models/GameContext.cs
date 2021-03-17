@@ -1,8 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 
 namespace GamesStore.Models
 {
-    public class GameContext : DbContext
+    public class GameContext : IdentityDbContext
     {
         public GameContext(DbContextOptions<GameContext> options) : base(options)
         {
@@ -13,6 +14,5 @@ namespace GamesStore.Models
         public DbSet<Order> Orders { get; set; }
         public DbSet<Basket> Baskets { get; set; }
         public DbSet<Category> Categories { get; set; }
-        public DbSet<Customer> Customers { get; set; }
     }
 }
