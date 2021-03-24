@@ -22,10 +22,7 @@ namespace GamesStore
         public void ConfigureServices(IServiceCollection services)
         {
             // Configure Entityframework core with PostgreSql.
-            services.AddDbContext<GameContext>(options =>
-            {
-                options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection"));
-            });
+            services.AddDbContext<GameContext>();
 
             services.AddIdentity<IdentityUser, IdentityRole>(options =>
             {
@@ -59,7 +56,6 @@ namespace GamesStore
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
-
             });
         }
     }

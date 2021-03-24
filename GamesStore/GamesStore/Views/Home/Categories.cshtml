@@ -1,0 +1,9 @@
+﻿
+<div class="btn-group-vertical">
+    <a class="btn btn-dark" type="button" name="Home"  href="/Home/Index">Домой</a>
+    <h3>Категории</h3>
+    @foreach (var category in ViewBag.Categories)
+    {
+        <a class="btn btn-dark" type="button" name="@category.Name" href="/Home/Index?category=@category.Name">@category.Name</a>
+    }
+</div>

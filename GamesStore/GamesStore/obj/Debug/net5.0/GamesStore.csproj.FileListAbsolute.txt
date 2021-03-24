@@ -52,3 +52,7 @@ C:\Online store\GamesStore\GamesStore\bin\Debug\net5.0\Microsoft.Extensions.Iden
 C:\Online store\GamesStore\GamesStore\bin\Debug\net5.0\Microsoft.Extensions.Identity.Stores.dll
 C:\Online store\GamesStore\GamesStore\bin\Debug\net5.0\Humanizer.dll
 C:\Online store\GamesStore\GamesStore\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Design.dll
+C:\Online store\GamesStore\GamesStore\obj\Debug\net5.0\Razor\Views\Home\Games.cshtml.g.cs
+C:\Online store\GamesStore\GamesStore\obj\Debug\net5.0\Razor\Views\Home\Categories.cshtml.g.cs
+C:\Online store\GamesStore\GamesStore\bin\Debug\net5.0\PagedList.dll
+C:\Online store\GamesStore\GamesStore\bin\Debug\net5.0\PagedList.Mvc.dll

@@ -1,0 +1,18 @@
+﻿@foreach (var games in ViewBag.Games)
+{
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">@games.Name</h5>
+            <p class="card-text">@games.Description</p>
+            @if (!games.Price == 0)
+            {
+                <a class="bg-success text-white">@games.Price</a>
+            }
+            else
+            {
+                <a class="bg-success text-white">Free to play</a>
+            }
+            <a href="#" class="btn btn-primary">To Basket</a>
+        </div>
+    </div>
+}

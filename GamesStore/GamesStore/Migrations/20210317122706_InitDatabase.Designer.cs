@@ -10,7 +10,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace GamesStore.Migrations
 {
     [DbContext(typeof(GameContext))]
-    [Migration("20210317104135_InitDatabase")]
+    [Migration("20210317122706_InitDatabase")]
     partial class InitDatabase
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

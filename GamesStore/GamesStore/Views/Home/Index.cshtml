@@ -1,8 +1,30 @@
-﻿@{
+﻿@model PagedList.IPagedList<GamesStore.Models.Game>
+
+@{
     ViewData["Title"] = "Home Page";
 }
+@foreach (var game in ViewBag.Games)
+{
+    <div class="card" style="width: auto">
+        <div class="card-body">
+            <div class="float-right">
+                @if (game.Price != 0)
+                {
+                    <div class="p-1 mb-2 bg-primary text-white rounded text-center">@game.Price $</div>
+                }
+                else
+                {
+                    <div class="p-1 mb-2 bg-primary text-white rounded text-center">FreeToPlay</div>
+                }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+                <a href="#" class="btn btn-success">Добавить в корзину</a>
+            </div>
+            <h5 class="card-title">@game.Name</h5>
+            <p class="card-text">@game.Description</p>
+        </div>
+    </div>
+}
+Страница @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) из @Model.PageCount
+
+
+@*@Html.PagedListPager(Model, page => Url.Action("Index", new { page }))*@
