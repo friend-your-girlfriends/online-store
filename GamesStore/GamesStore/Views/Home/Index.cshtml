@@ -16,9 +16,11 @@
                 {
                     <div class="p-1 mb-2 bg-primary text-white rounded text-center">FreeToPlay</div>
                 }
+            <form action="Home/Basket?gameId=@game.GameId" method="post">
+                <input class="btn btn-success" type="submit" value="Добавить в корзину" />
+            </form>
+        </div>
 
-                <a href="#" class="btn btn-success">Добавить в корзину</a>
-            </div>
             <h5 class="card-title">@game.Name</h5>
             <p class="card-text">@game.Description</p>
         </div>

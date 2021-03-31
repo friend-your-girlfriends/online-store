@@ -52,8 +52,7 @@ namespace GamesStore.Migrations
                 columns: table => new
                 {
                     BasketId = table.Column<string>(type: "text", nullable: false),
-                    TotalPrice = table.Column<float>(type: "real", nullable: false),
-                    Quantity = table.Column<int>(type: "integer", nullable: false)
+                    TotalPrice = table.Column<float>(type: "real", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -74,6 +73,21 @@ namespace GamesStore.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "GameBaskets",
+                columns: table => new
+                {
+                    GameBasketId = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    BasketId = table.Column<string>(type: "text", nullable: true),
+                    GameId = table.Column<int>(type: "integer", nullable: false),
+                    Quantity = table.Column<int>(type: "integer", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_GameBaskets", x => x.GameBasketId);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Games",
                 columns: table => new
                 {
@@ -82,8 +96,7 @@ namespace GamesStore.Migrations
                     Name = table.Column<string>(type: "text", nullable: true),
                     Description = table.Column<string>(type: "text", nullable: true),
                     CategoryId = table.Column<int>(type: "integer", nullable: false),
-                    Price = table.Column<float>(type: "real", nullable: false),
-                    BaskteId = table.Column<string>(type: "text", nullable: true)
+                    Price = table.Column<float>(type: "real", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -278,6 +291,9 @@ namespace GamesStore.Migrations
 
             migrationBuilder.DropTable(
                 name: "Categories");
+
+            migrationBuilder.DropTable(
+                name: "GameBaskets");
 
             migrationBuilder.DropTable(
                 name: "Games");

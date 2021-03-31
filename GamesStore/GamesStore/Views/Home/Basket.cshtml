@@ -1,0 +1,38 @@
+﻿
+<h4>Ваша корзина</h4>
+<table class="table">
+    <thead class="border-0">
+        <tr>
+            <th scope="col">Кол-во</th>
+            <th scope="col">Игра</th>
+            <th scope="col">Цена</th>
+            <th scope="col">Общая цена</th>
+        </tr>
+    </thead>
+    <tbody>
+            @foreach (var game in ViewBag.Games)
+            {
+                <tr>
+                <th></th>
+                    <td>@game.Name</td>
+                    <td>@game.Price $</td>
+                    <td></td>
+                    <td>
+                        <a href="#" class="btn btn-warning btn-sm">Удалить</a>
+                    </td>
+                </tr>
+            }
+
+        <tr>
+
+            <th></th>
+            <td></td>
+            <td>Итого:</td>
+            <td colspan="2"></td>
+        </tr>
+    </tbody>
+</table>
+<a class="btn btn-info" type="button" name="Index"
+   asp-controller="Home" asp-action="Index">Продолжить покупки</a>
+<a class="btn btn-info" type="button" name="Order"
+   asp-controller="Home" asp-action="Order">Оформить заказ</a>

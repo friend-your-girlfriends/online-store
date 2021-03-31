@@ -56,3 +56,5 @@ C:\Online store\GamesStore\GamesStore\obj\Debug\net5.0\Razor\Views\Home\Games.cs
 C:\Online store\GamesStore\GamesStore\obj\Debug\net5.0\Razor\Views\Home\Categories.cshtml.g.cs
 C:\Online store\GamesStore\GamesStore\bin\Debug\net5.0\PagedList.dll
 C:\Online store\GamesStore\GamesStore\bin\Debug\net5.0\PagedList.Mvc.dll
+C:\Online store\GamesStore\GamesStore\obj\Debug\net5.0\Razor\Views\Home\Basket.cshtml.g.cs
+C:\Online store\GamesStore\GamesStore\obj\Debug\net5.0\Razor\Views\Home\Order.cshtml.g.cs

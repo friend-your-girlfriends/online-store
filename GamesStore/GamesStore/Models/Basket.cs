@@ -6,6 +6,5 @@ namespace GamesStore.Models
     {
         public string BasketId { get; set; }
         public float TotalPrice { get; set; }
-        public int Quantity { get; set; }
     }
 }

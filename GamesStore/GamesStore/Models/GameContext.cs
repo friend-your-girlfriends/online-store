@@ -10,6 +10,7 @@ namespace GamesStore.Models
         public DbSet<Order> Orders { get; set; }
         public DbSet<Basket> Baskets { get; set; }
         public DbSet<Category> Categories { get; set; }
+        public DbSet<GameBasket> GameBaskets { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

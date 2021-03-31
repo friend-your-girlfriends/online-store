@@ -24,9 +24,6 @@ namespace GamesStore.Migrations
                     b.Property<string>("BasketId")
                         .HasColumnType("text");
 
-                    b.Property<int>("Quantity")
-                        .HasColumnType("integer");
-
                     b.Property<float>("TotalPrice")
                         .HasColumnType("real");
 
@@ -57,9 +54,6 @@ namespace GamesStore.Migrations
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-                    b.Property<string>("BaskteId")
-                        .HasColumnType("text");
-
                     b.Property<int>("CategoryId")
                         .HasColumnType("integer");
 
@@ -75,6 +69,27 @@ namespace GamesStore.Migrations
                     b.HasKey("GameId");
 
                     b.ToTable("Games");
+                });
+
+            modelBuilder.Entity("GamesStore.Models.GameBasket", b =>
+                {
+                    b.Property<int>("GameBasketId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+                    b.Property<string>("BasketId")
+                        .HasColumnType("text");
+
+                    b.Property<int>("GameId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("integer");
+
+                    b.HasKey("GameBasketId");
+
+                    b.ToTable("GameBaskets");
                 });
 
             modelBuilder.Entity("GamesStore.Models.Order", b =>
