@@ -1,21 +1,34 @@
-﻿<h3>Оформить заказ сейчас</h3>
+﻿@model GamesStore.Models.Order
+
+<h3>Оформить заказ сейчас</h3>
 <a>Пожалуйста, введите  ваши контактные данные и мы сразу отправим товар</a>
 
-
+@using (Html.BeginForm())
+{
 <form action="Order" method="post">
     <h4>Данные</h4>
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+<div class="alert-danger">
+    @Html.ValidationMessageFor(model => model.UserName)
+    @Html.ValidationMessageFor(model => model.Address)
+    @Html.ValidationMessageFor(model => model.City)
+</div>
     <a>Введите имя:</a><br />
-    <input type="text" name="UserName" value="" class="container-fluid"/>
-
+    <input type="text" asp-for="UserName" class="container-fluid"/>
     <h4>Адрес доставки</h4>
     <a>Первый адрес:</a><br />
-    <input type="text" name="FirstAddress" value="" class="container-fluid"/><br />
+    <input type="text" asp-for="Address" class="container-fluid"/><br />
     <a>Второй адрес:</a><br />
-    <input type="text" name="SecondAddress" value="" class="container-fluid"/><br />
+    <input type="text" asp-for="SecondAddress" class="container-fluid"/><br />
     <a>Третий адрес:</a><br />
-    <input type="text" name="ThirdAddress" value="" class="container-fluid"/><br />
+    <input type="text" asp-for="ThirdAddress" class="container-fluid"/><br />
     <a>Город:</a><br />
-    <input type="text" name="City" value="" class="container-fluid"/><br />
+    <input asp-for="City" class="container-fluid"/><br />
     <a>Страна:</a><br />
-    <input type="text" name="Country" value="" class="container-fluid"/><br />
+    <input asp-for="Country" value="" class="container-fluid"/><br />
+    <a>Офромить в подарочную упаковку</a><br />
+    <input type="checkbox" name="UseGiftWrapping" value="" /><br />
+
+    <input type="submit" asp-action="Order" value="Заказать"/>
 </form>
+}

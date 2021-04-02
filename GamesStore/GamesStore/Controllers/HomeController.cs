@@ -7,13 +7,15 @@ using System.Diagnostics;
 using System.Threading.Tasks;
 using PagedList;
 using System;
+using System.Linq;
+using GamesStore.ViewModel;
 
 namespace GamesStore.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private IGameService _gameService = new GameService();
+        private IUserService _userService = new UserService();
         private static string _basketId;
         public HomeController(ILogger<HomeController> logger)
         {
@@ -24,13 +26,13 @@ namespace GamesStore.Controllers
         public async Task<IActionResult> Index(int page = 1, string category = "")
         {
             int pageSize = 2;
-            var categories = await _gameService.CategoryInfoAsync();
-            var games = await _gameService.GameInfoAsync();
+            var categories = await _userService.CategoryInfoAsync();
+            var games = await _userService.GameInfoAsync();
 
             List<Game> categoryGames = null;
 
             if (!string.IsNullOrEmpty(category))
-                categoryGames = await _gameService.CategoryGamesInfoAsync(category);
+                categoryGames = await _userService.CategoryGamesInfoAsync(category);
 
             ViewBag.Categories = categories;
 
@@ -72,26 +74,32 @@ namespace GamesStore.Controllers
 
         //POST Home/Basket?gameId
         [HttpPost]
-        public async Task<IActionResult> Basket(int gameId)
+        public IActionResult Basket(int gameId)
         {
             CreateCookie();
 
-            _gameService.AddToBasketGame(gameId, _basketId);
+            _userService.AddToBasketGame(gameId, _basketId);
 
-            var games = await _gameService.GameInBasketInfoAsync(_basketId);
+            var games = _userService.GameInBasketInfoAsync(_basketId);
 
             ViewBag.Games = games;
 
             return View();
-
         }
 
         [HttpGet]
         public IActionResult Order()
         {
-
-
             return View();
+        }
+
+        [HttpPost]
+        public IActionResult Order(Order order)
+        {
+            if(ModelState.IsValid)
+                _userService.AddOrder(order);
+
+            return View(order);
         }
         public IActionResult Privacy()
         {

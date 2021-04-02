@@ -10,10 +10,10 @@
         </tr>
     </thead>
     <tbody>
-            @foreach (var game in ViewBag.Games)
-            {
+            @foreach(var game in ViewBag.Games)
+            { 
                 <tr>
-                <th></th>
+                <th>@game.Quantity</th>
                     <td>@game.Name</td>
                     <td>@game.Price $</td>
                     <td></td>
@@ -24,7 +24,6 @@
             }
 
         <tr>
-
             <th></th>
             <td></td>
             <td>Итого:</td>
